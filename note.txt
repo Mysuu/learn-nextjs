@@ -1,0 +1,41 @@
+- là react framework
+- pre-rendering: trước thời điểm trình chiếu
+ là quá trình chuyển đổi từ component sang html trước thời điểm 
+ nó tiếp cận đến trình duyệt
+
+- có 2 loại pre-rendering
+1. SSR(serverside rendering)
+- chuyển hoá từ react component -> html
+thực hiện ở phía sever
+- chỉ tạo ra html khi trình duyệt gửi request
+
+2. SSG(static site genertor)
+- chuyển hoá từ react component -> html
+nhưng diễn ra mà k cần trình duyệt gửi request
+- file html được tạo sẵn, chỉ chờ trình duyệt lấy ra
+
+** fallback:
+-false: trả về page not found
+-true: tạo ra 1 file json mới, chuyển trang sẽ biến mất
+-blocking: tạo ra 1 file json mới, chuyển trang vẫn giữ(đc lưu vào server)
+
+** NextJS: 02-03 Navigation between Pages
+Client side routing: gọi 1 lần file duy nhất,
+không làm full page reload,
+get thêm 1 file js về chạy file js đó để chuyển đổi
+qua trang mong muốn
+Để <Link><a>... thì a href đến 1 trang nào đó, cái đó
+sẽ tốt cho SEO
+- scroll: true: cho phép bấm vào trở về đầu trang
+- replace: chuyển trang mới k back về trang cũ đc
+- prefetch: refesh trước thông tin của trang sẽ đi tới
+  + nó sẽ prefetch sẵn các file có trong phạm vi viewport
+  (màn hình hiển thị ban đầu những gì thấy được)
+  + có nghĩa là chuẩn bị sẵn file mà Link sẽ dẫn đến
+  + nếu mạng chậm sẽ không prefetch trước
+  + chỉ được bật ở mode production(npm run build -> npm start)
+  + ban đầu prefetch chỉ tải trước về, khi bấm vào thì mới chuyển
+  trang, nếu không muốn prefetch thông tin thì để là false,
+  không để gì auto true
+
+useRouter dúng như useNavigate
