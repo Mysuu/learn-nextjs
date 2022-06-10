@@ -73,3 +73,17 @@ render 1 lần
 - nếu k sử dụng thì trang đó pre-render được nên sẽ bật mode 
 Automatic Static Optimization, build ra file html render ra
 client luôn và nó sẽ render 2 lần nếu obj có thay đổi
+
+**NextJS: 02-06 SSG getStaticProps with typescript
+- dùng khi sử dụng SSG
+- build ra những file html sẵn, khi deploy lên server đã có sẵn
+những file html đó rồi, user request nó chỉ việc trả về, k cần
+sử lý gì nữa cả
+1. Static HTML Generation:chỉ có html, k có json data
+2. Static HTML + JSON Data: getStaticProps
+3. Static HTML + JSON Data + Dynamic Routes: getInitialProps, getStaticPaths
+- Lưu ý: dùng getInitialProps, getStaticPaths không dùng với getServerSideProps
+        và ngược lại
+- data được lấy về bên server sẽ được truyền lên qua
+thẻ script chứa id là '__NEXT_DATA__', và bind ngược lại lên
+client
