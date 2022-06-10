@@ -44,8 +44,8 @@ useRouter dúng như useNavigate
 - hydrate() trong react giống render(), nhưng sử dụng cho
 việc thêm những eventlisteners vào nhưng file html
 đã đc render sẵn phía sever
-- Pre-rendering: render sẵn file html ở phía sever, khi user
-get về thì có sẵn show lên rồi load thêm file js
+- Pre-rendering: render(chuẩn bị) sẵn file html ở phía sever,
+khi user get về thì có sẵn show lên rồi load thêm file js
   + SSR - Server Side Rendering: mỗi lần gửi request mới trả về
   1 file html
   + SSG - Static Site Generation: build ra tất, gọi gì thì lấy ra
@@ -59,3 +59,17 @@ chưa có thì mới tạo cái mới
 
 - Mỗi trang trong NextJS có thể config 1 dạng pre-rendering khác
 nhau
+
+**NextJS: 02-05 Automatic Static Optimization
+- nếu sử dụng 2 hàm getInitialProps và getServerSideProps thì
+sẽ không phải là Automatic Static Optimization, render theo từng
+request, k pre-render trước đó đc
+- mỗi lần request lên trang cần đến,nó phải tải file js về
+ để thực thi chứ k chuẩn bị sẵn html nữa
+- getServerSideProps là server side rendering nên nó sẽ chạy 
+lên phía server thực hiện redirect ra file html xong mới trả
+về phía client, trả về đầy đủ thông tin của query luôn nên chỉ
+render 1 lần
+- nếu k sử dụng thì trang đó pre-render được nên sẽ bật mode 
+Automatic Static Optimization, build ra file html render ra
+client luôn và nó sẽ render 2 lần nếu obj có thay đổi
