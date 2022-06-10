@@ -39,3 +39,23 @@ sẽ tốt cho SEO
   không để gì auto true
 
 useRouter dúng như useNavigate
+
+**NextJS: 02-04 SSG, SSR, CSR and ISR
+- hydrate() trong react giống render(), nhưng sử dụng cho
+việc thêm những eventlisteners vào nhưng file html
+đã đc render sẵn phía sever
+- Pre-rendering: render sẵn file html ở phía sever, khi user
+get về thì có sẵn show lên rồi load thêm file js
+  + SSR - Server Side Rendering: mỗi lần gửi request mới trả về
+  1 file html
+  + SSG - Static Site Generation: build ra tất, gọi gì thì lấy ra
+- No Pre-rendering: lần render đầu tiên là file html rỗng <div>
+root, sau đó load js lên mới render DOM lên
+- CSR - Client Side Rendering: k render phía server, chờ client load 
+file js xong mới render lên giao diện
+- ISR - Incremental Static Regeneration: build trc những sản phẩm
+phổ biến dưới dạng SSG, ai query lên lấy về luôn, còn gọi file
+chưa có thì mới tạo cái mới
+
+- Mỗi trang trong NextJS có thể config 1 dạng pre-rendering khác
+nhau
