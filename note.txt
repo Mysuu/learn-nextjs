@@ -91,3 +91,5 @@ client
 **NextJS: 02-07 SSG getStaticPaths with typescript
 - getStaticPaths sau đó gọi từng getStaticProps rồi tạo ra từng file html
 trong next -> server -> pages
+
+**NextJS: 02-08 SSG and Data Fetching on client side
