@@ -10,6 +10,9 @@ export interface PostPageProps {
 //dynamic routes(single, multiple parameter)
 const PostDetailPageProps = ({ post }: PostPageProps) => {
   const router = useRouter();
+  if (router.isFallback) {
+    return <div>Loading...</div>;
+  }
   if (!post) return null;
   return (
     <div>
@@ -38,7 +41,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths: data.data.map((post: any) => ({ params: { postId: post.id } })),
-    fallback: false, //trả về not found
+    // fallback: false, //trả về not found
+    // fallback: "blocking",//tạo ra 1 file json đường dẫn đc thêm vào,
+    // phải chờ tgian hàm getStaticProps chạy
+    fallback: true, //giống blocking nhưng thêm trạng thái chờ vào client
+    //cho người dùng thấy
   };
 };
 
@@ -57,5 +64,6 @@ export const getStaticProps: GetStaticProps<PostPageProps> = async (
     props: {
       post: data,
     },
+    revalidate: 5,
   };
 };

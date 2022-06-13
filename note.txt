@@ -47,15 +47,24 @@ việc thêm những eventlisteners vào nhưng file html
 - Pre-rendering: render(chuẩn bị) sẵn file html ở phía sever,
 khi user get về thì có sẵn show lên rồi load thêm file js
   + SSR - Server Side Rendering: mỗi lần gửi request mới trả về
-  1 file html
+  1 file html. Dữ liệu luôn luôn là mới nhất (không nên dùng)
+
   + SSG - Static Site Generation: build ra tất, gọi gì thì lấy ra
+  nhưng không thay đổi được dữ liệu sau khi đã build, nên dùng cho
+  những trang k cần thay đổi dữ liệu
+
 - No Pre-rendering: lần render đầu tiên là file html rỗng <div>
 root, sau đó load js lên mới render DOM lên
+
 - CSR - Client Side Rendering: k render phía server, chờ client load 
-file js xong mới render lên giao diện
+file js xong mới render lên giao diện. sử dụng khi page cần private.
+K cần làm ssr, k cần pre-render dữ liệu trước, xử lý private token
+phía client
+
 - ISR - Incremental Static Regeneration: build trc những sản phẩm
 phổ biến dưới dạng SSG, ai query lên lấy về luôn, còn gọi file
-chưa có thì mới tạo cái mới
+chưa có thì mới tạo cái mới. Giống SSG nhưng khi user request có
+thể tạo ra html
 
 - Mỗi trang trong NextJS có thể config 1 dạng pre-rendering khác
 nhau
@@ -93,3 +102,9 @@ client
 trong next -> server -> pages
 
 **NextJS: 02-08 SSG and Data Fetching on client side
+
+**NextJS: 02-09 Server Side Rendering with cache: should replay
+- getServerSideProps
+
+**NextJS: 02-10 ISR - Incremental Static Regeneration
+- revalidate: 60 trong getStaticProps
