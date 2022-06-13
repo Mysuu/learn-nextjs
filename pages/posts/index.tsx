@@ -1,4 +1,5 @@
 import { GetStaticProps, GetStaticPropsContext } from "next";
+import Link from "next/link";
 import React from "react";
 
 export interface PostListPageProps {
@@ -12,7 +13,11 @@ const PostListPage = ({ posts }: PostListPageProps) => {
       <h1>Post List Page</h1>
       <ul>
         {posts.map((post) => (
-          <li key={post.id}>{post.title}</li>
+          <li key={post.id}>
+            <Link href={`/posts/${post.id}`}>
+              <a>{post.title}</a>
+            </Link>
+          </li>
         ))}
       </ul>
     </div>
@@ -27,12 +32,14 @@ export const getStaticProps: GetStaticProps<PostListPageProps> = async (
   //hàm getStaticProps ở phía server-side
   //build lên production rồi chỉ chạy lúc build-time
   //lúc dev gửi request 1 lần luôn chạy hàm
-  const res = await fetch("https://jsonplaceholder.typicode.com/posts");
+  const res = await fetch(
+    "https://js-post-api.herokuapp.com/api/posts?_page=1"
+  );
   const data = await res.json();
 
   return {
     props: {
-      posts: data.map((data: any) => ({ id: data.id, title: data.title })),
+      posts: data.data.map((data: any) => ({ id: data.id, title: data.title })),
     },
   };
 };

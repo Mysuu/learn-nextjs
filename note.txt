@@ -87,3 +87,7 @@ sử lý gì nữa cả
 - data được lấy về bên server sẽ được truyền lên qua
 thẻ script chứa id là '__NEXT_DATA__', và bind ngược lại lên
 client
+
+**NextJS: 02-07 SSG getStaticPaths with typescript
+- getStaticPaths sau đó gọi từng getStaticProps rồi tạo ra từng file html
+trong next -> server -> pages
