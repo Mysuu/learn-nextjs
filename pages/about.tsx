@@ -1,7 +1,7 @@
 import Header from "@/components/common/header";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
-import dynamic from "next/dynamic";
+import { MainLayOut } from "@/components/layout";
 
 // const Header = dynamic(() => import("@/components/common/header"), {
 //   ssr: false,
@@ -57,6 +57,8 @@ const About = () => {
     </div>
   );
 };
+
+About.Layout = MainLayOut; //cái này giữ nguyên khi chuyển trang
 
 export default About;
 
