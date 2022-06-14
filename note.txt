@@ -108,3 +108,9 @@ trong next -> server -> pages
 
 **NextJS: 02-10 ISR - Incremental Static Regeneration
 - revalidate: 60 trong getStaticProps
+
+**NextJS: 03-01 Authentication với NextJS
+-Authentication: xác nhận có phải người trong hệ thống K
+-Authorization: phân quyền trong hệ thống
+
+**NextJS: 03-02 Tạo API đơn giản với NextJS
